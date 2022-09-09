@@ -1,0 +1,97 @@
+@base <https://ark.lib.uchicago.edu/ark:61001/> .
+@prefix aes60-2011: <https://www.aes.org/publications/standards/> .
+@prefix ark: <https://datatracker.ietf.org/doc/html/draft-kunze-ark-29> .
+@prefix audioMD: <http://www.loc.gov/audioMD> .
+@prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
+@prefix cts: <http://marklogic.com/cts#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dma: <http://lib.uchicago.edu/dma/> .
+@prefix ebucore: <https://www.ebu.ch/metadata/ontologies/ebucore/> .
+@prefix edm: <http://www.europeana.eu/schemas/edm/> .
+@prefix erc: <http://purl.org/kernel/elements/1.1/> .
+@prefix foaf: <http://xmlns.com/foaf/spec/> .
+@prefix http: <https://tools.ietf.org/html/rfc7230> .
+@prefix lexvo: <https://www.iso.org/standard/39534.html> .
+@prefix madsrdf: <http://www.loc.gov/mads/rdf/v1#...http://www.w3.org/XML/1998/namespace> .
+@prefix mix: <http://www.loc.gov/mix/v20/> .
+@prefix olac: <http://www.language-archives.org/OLAC/metadata.html> .
+@prefix ore: <http://www.openarchives.org/ore/terms/> .
+@prefix premis: <https://id.loc.gov/ontologies/premis-3-0-0.html> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix role: <http://id.loc.gov/vocabulary/relators/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tgn: <http://vocab.getty.edu/tgn/> .
+@prefix ucla: <http://lib.uchicago.edu/ucla/> .
+@prefix vra: <http://purl.org/vra/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<z9m865s34c01/rem>
+dcterms:creator <https://dldc.lib.uchicago.edu/> ;
+dcterms:created "2022-02-09T11:21:52-06:00"^^xsd:dateTime ;
+dcterms:modified "2022-02-09T11:21:52-06:00"^^xsd:dateTime ;
+ore:describes <z9m865s34c01/aggregation> ;
+a ore:ResourceMap .
+
+<z9m865s34c01/aggregation>
+edm:aggregatedCHO <z9m865s34c01> ;
+edm:dataProvider "University of Chicago Library" ;
+edm:isShownBy <z9m865s34c01/file.wav> ;
+edm:object <z9m865s34c01/file.wav> ;
+edm:provider "University of Chicago Library" ;
+edm:rights <https://rightsstatements.org/vocab/NoC-US/1.0/> ;
+ore:isDescribedBy <z9m865s34c01/rem> ;
+a ore:Aggregation .
+
+<z9m865s34c01>
+dc:contributor [
+    foaf:name "Hanks, William F." ;
+    olac:role "interviewer"
+] ;
+dc:contributor [
+    foaf:name "Unnamed contributor (male)" ;
+    olac:role "consultant"
+] ;
+dc:description "Contents: \"History of Cooperativa\"" ;
+dc:identifier "5548" ;
+dc:language [
+    lexvo:iso639P3PCode "spa" ;
+    dma:languageRole "primary"
+] ;
+dc:language [
+    lexvo:iso639P3PCode "yua" ;
+    dma:languageRole "subject"
+] ;
+dc:title "Yucatec Maya field recordings (Hanks, 1979-1987) Yucatán Maya" ;
+dc:type "PhysicalObject" ;
+dcterms:rights "Restricted" ;
+dcterms:spatial "7005600" ;
+dcterms:temporal "1979" ;
+dcterms:identifier "https://n2t.net/ark:61001/z9m865s34c01" ;
+edm:type "SOUND" ;
+erc:who "Hanks, William F., interviewer; Unnamed contributor (male), consultant" ;
+erc:what "Yucatec Maya field recordings (Hanks, 1979-1987) Yucatán Maya" ;
+erc:when "1979" ;
+erc:where "https://n2t.net/ark:61001/z9m865s34c01" ;
+a edm:ProvidedCHO.
+
+<z9m865s34c01/file.dc.xml>
+dc:format "application/xml" ;
+ore:proxyFor <b2nw3wm8552h> ;
+ore:proxyIn <b2nw3wm8552h/aggregation> ;
+a ore:Proxy .
+
+<z9m865s34c01/file.wav> 
+dcterms:format "audio/x-wav" ;
+premis:fixity [
+  rdf:type <https://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions/sha512>;
+  rdf:value "10b1a2959f2229ab52e3873651c1d99036caa1e5d641e0bf257"] ;
+premis:originalName "FieldRecording1996-2.wav" ;
+premis:size 44694436 ;
+a edm:WebResource .
+
+<b2nw3wm8552h/00000001/file.xml>
+dc:format "application/xml" ;
+a rdfs:Resource . # This is the default type. 

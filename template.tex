@@ -1,0 +1,235 @@
+% \UseRawInputEncoding
+% To produce a PDF of this document: make mesoamerican.pdf
+\documentclass[11pt]{article}
+% \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+
+\usepackage{listings}
+\lstset{
+  escapeinside={(*@}{@*)},
+  }
+
+\lstset{literate=
+  {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+  {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+  {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+  {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+  {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+  {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+  {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+  {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+  {ã}{{\~a}}1 {ẽ}{{\~e}}1 {ĩ}{{\~i}}1 {õ}{{\~o}}1 {ũ}{{\~u}}1
+  {Ã}{{\~A}}1 {Ẽ}{{\~E}}1 {Ĩ}{{\~I}}1 {Õ}{{\~O}}1 {Ũ}{{\~U}}1
+  {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+  {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+  {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+  {€}{{\euro}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
+  {»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1 {¡}{{!`}}1 
+  {'}{{'}}1
+}
+
+\date{2022-09-09}
+\title{Europeana Data Model (EDM) Template for use with University of Chicago Library Digital Collections}
+\author{Charles Blair}
+\hypersetup{
+ pdfauthor={},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={}, 
+ pdftitle={},
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+
+\section{Triple Types}
+All triples should be typed. Choose from among these types.
+
+\begin{lstlisting}
+a ore:ResourceMap
+a ore:Aggregation
+a edm:ProvidedCHO
+a ore:Proxy # optional
+a edm:WebResource
+a rdfs:Resource # This is the default type. Use it when
+                  none of the preceding apply.
+\end{lstlisting}
+
+Of the above, a ore:Proxy is optional, but included if we are basing the descriptive metadata in a edm:ProvidedCHO on pre-existing descriptive metadata (e.g., a cataloging record).
+
+\section{Required Elements}
+In this section, mandatory Europeana elements are indicated by \textbf{boldface}. Mandatory Europeana elements governed by either/or or if/then statements are indicated by \textit{italics}. Mandatory elements required by local usage are \underline{underlined}.
+
+The following is with reference to Definition of the Europeana Data Model v5.2.8 06/10/2017.\footnote{https://pro.europeana.eu/files/Europeana\_Professional/Share\_your\_data/Technical\_requirements/
+EDM\_Documentation//EDM\_Definition\_v5.2.8\_102017.pdf}
+
+\subsection{ore:ResourceMap}
+
+The following are required for an edm:ResourceMap. The requirements are indicated by example.
+
+\begin{verbatim}
+<z9m865s34c01/rem>
+dcterms:creator <https://dldc.lib.uchicago.edu/> ;
+dcterms:created "2022-02-09T11:21:52-06:00"^^xsd:dateTime ;
+dcterms:modified "2022-02-09T11:21:52-06:00"^^xsd:dateTime ;
+ore:describes <z9m865s34c01/aggregation> ;
+a ore:ResourceMap .
+\end{verbatim}
+
+Note that when an ore:ResourceMap is being created, the values of dcterms:created and dcterms:modified are the same.
+
+\subsection{ore:Aggregation}
+
+The following are mandatory Eurpeana elememnts for the \textit{ore:Aggregation}.
+
+\begin{itemize}
+
+\item Either \textit{edm:isShownAt} or \textit{edm:isShownBy}. If \textit{edm:isShownBy} is used, then \textit{edm:object} must be supplied. (See 3.2.27.)
+
+\item \textbf{edm:rights}
+
+The following is an example of an ore:Aggregation. It indicates the other required elements.
+
+\begin{verbatim}
+<z9m865s34c01/aggregation>
+edm:aggregatedCHO <z9m865s34c01> ;
+edm:dataProvider "University of Chicago Library" ;
+edm:isShownBy <z9m865s34c01/file.wav> ;
+edm:object <z9m865s34c01/file.wav> ;
+edm:provider "University of Chicago Library" ;
+edm:rights <https://rightsstatements.org/vocab/NoC-US/1.0/> ;
+ore:isDescribedBy <z9m865s34c01/rem> ;
+a ore:Aggregation .
+\end{verbatim}  
+
+\end{itemize}
+
+\subsection{edm:ProvidedCHO}
+The following are mandatory Europeana elements for the \textit{edm:ProvidedCHO}.
+
+\begin{itemize}
+
+  \item Either \textit{dc:description} or \underline{\textit{dc:title}} or both. Local usage requires \underline{dc:title}.
+
+  \item One or more the following: \textit{dc:coverage}, \underline{\textit{dcterms:spatial}}, \textit{dc:subject}, \textit{dcterms:temporal}, or \textit{dc:type}. Local usage requires \underline{dcterms:spatial} and \underline{dcterms:temporal}. 
+
+  \item \textit{dc:language} for TEXT objects. It is strongly recommended for other object types if there is a language aspect. Language codes conforming to ISO 639 are used as values.
+
+  \item \textbf{edm:type} must occur and must use one of the following values (in upper case): TEXT, IMAGE, SOUND, VIDEO or 3D.
+\end{itemize}
+
+In addition to what is specified above, the following are also required by local usage for the \textit{edm:providedCHO}.
+\begin{itemize}
+  \item \underline{dcterms:identifier}. Literal values for locally-created ARK identifiers are used, e.g., "https://n2t.net/ark:61001/z9m865s34c01" (dc:identifier may be used for any original identifiers occurring in provided metadata)
+
+  \item \underline{dcterms:spatial}. Literal values from Getty's Thesaurus of Geographical Names (TGN) are used.
+
+  \item \underline{dcterms:temporal}. Literal values conforming to ISO 8601 are used.
+
+  \item \underline{dcterms:format}. Literal values conforming to Internet Media Types (MIME) are used (http://www.iana.org/assignments/media-types/).
+
+\end{itemize}
+
+For the following, see ``DCMI Kernel Metadata Community: Kernel Metadata and Electronic Resource Citations (ERCs)'', Section 3, Kernel Stories, https://www.dublincore.org/groups/kernel/spec/\#anchor3. They will support responses to queries about the metadata when the appropriate syntax is provided to an ARK resolver: ``ARK resolvers must support the `?info' inflection for requesting metadata.'' (https://datatracker.ietf.org/doc/html/draft-kunze-ark-28\#section-1.2. See further in that document for the ?info infletion and the use of Electronic Resource Citations [ERCs].)
+
+\begin{itemize}
+\item \underline{erc:who} The value is drawn from dc[terms]:creator, dc[terms]:contributor, or dc[terms]:publisher, in that order.
+\item \underline{erc:what} The value is drawn from dc:title or dc:description, in that order.
+\item \underline{erc:when} The value is drawn from dcterms:temporal.
+\item \underline{erc:where} The value is drawn from dcterms:identifier.
+\end{itemize}
+
+Any values which cannot be assigned should be drawn from ``DCMI Kernel Metadata Community: Kernel Metadata and Electronic Resource Citations (ERCs)'', Section 9.3, Special Kernel Standardized Value Codes, https://www.dublincore.org/groups/kernel/spec/\#anchor16. For a local copy see ``Null Values'', https://dldc.lib.uchicago.edu/dl/nullValues.html.
+
+The following is an example of an edm:ProvidedCHO. This example does not include other elements specific to this digital collection which may also be included in the edm:ProvidedCHO. It only includes those elements discussed in this section.
+
+\begin{verbatim}
+<z9m865s34c01>
+dc:contributor [
+    foaf:name "Hanks, William F." ;
+    olac:role "interviewer"
+] ;
+dc:contributor [
+    foaf:name "Unnamed contributor (male)" ;
+    olac:role "consultant"
+] ;
+dc:description "Contents: \"History of Cooperativa\"" ;
+dc:identifier "5548" ;
+dc:language [
+    lexvo:iso639P3PCode "spa" ;
+    dma:languageRole "primary"
+] ;
+dc:language [
+    lexvo:iso639P3PCode "yua" ;
+    dma:languageRole "subject"
+] ;
+dc:title "Yucatec Maya field recordings (Hanks, 1979-1987) Yucatán Maya" ;
+dc:type "PhysicalObject" ;
+dcterms:rights "Restricted" ;
+dcterms:spatial "7005600" ;
+dcterms:temporal "1979" ;
+dcterms:identifier "https://n2t.net/ark:61001/z9m865s34c01" ;
+edm:type "SOUND" ;
+erc:who "Hanks, William F., interviewer; Unnamed contributor (male), consultant" ;
+erc:what "Yucatec Maya field recordings (Hanks, 1979-1987) Yucatán Maya" ;
+erc:when "1979" ;
+erc:where "https://n2t.net/ark:61001/z9m865s34c01" ;
+a edm:ProvidedCHO.
+\end{verbatim}
+
+\subsection{ore:Proxy}
+
+The following are required for an ore:Proxy, which is optional; it is used only if one is associating a file of original descriptive metadata, e.g., MARCXML or Dublin Core, with the aggregation. The requirements are indicated by example. 
+
+\begin{verbatim}
+<z9m865s34c01/file.dc.xml>
+dc:format "application/xml" ;
+ore:proxyFor <b2nw3wm8552h> ;
+ore:proxyIn <b2nw3wm8552h/aggregation> ;
+a ore:Proxy .
+\end{verbatim}
+
+Note that when an ore:ResourceMap is being created, the values of dcterms:created and dcterms:modified are the same.
+
+\subsection{edm:WebResource}
+
+The following are required for an edm:WebResource. The requirements are indicated by example.
+
+\begin{verbatim}
+<z9m865s34c01/file.wav> 
+dcterms:format "audio/x-wav" ;
+premis:fixity [
+  rdf:type <https://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions/sha512>;
+  rdf:value "10b1a2959f2229ab52e3873651c1d99036caa1e5d641e0bf257"] ;
+premis:originalName "FieldRecording1996-2.wav" ;
+premis:size 44694436 ;
+a edm:WebResource .
+\end{verbatim}
+
+\subsection{rdfs:Resource}
+
+If rdfs:Resource is used, the following indicates its format. The example is for OCR data for a page object in Campus Publications.
+
+\begin{verbatim}
+<b2nw3wm8552h/00000001/file.xml>
+dc:format "application/xml" ;
+a rdfs:Resource . # This is the default type. 
+\end{verbatim}
+
+\pagebreak[4]
+\section{Example}
+\lstinputlisting[extendedchars=false,breaklines=true]{template.ttl}
+
+\end{document}
