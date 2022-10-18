@@ -88,7 +88,7 @@ a ore:Proxy .
 <z9m865s34c01/file.wav> 
 dcterms:format "audio/x-wav" ;
 premis:fixity [
-  rdf:type <https://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions/sha512>;
+  rdf:type <https://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions/sha512> ;
   rdf:value "10b1a2959f2229ab52e3873651c1d99036caa1e5d641e0bf257"] ;
 premis:originalName "FieldRecording1996-2.wav" ;
 premis:size 44694436 ;
