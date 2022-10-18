@@ -93,7 +93,3 @@ premis:fixity [
 premis:originalName "FieldRecording1996-2.wav" ;
 premis:size 44694436 ;
 a edm:WebResource .
-
-<b2nw3wm8552h/00000001/file.xml>
-dc:format "application/xml" ;
-a rdfs:Resource . # This is the default type. 
