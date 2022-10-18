@@ -56,14 +56,16 @@ dc:contributor [
 ] ;
 dc:description "Contents: \"History of Cooperativa\"" ;
 dc:identifier "5548" ;
-dc:language [
+dma:language [
     lexvo:iso639P3PCode "spa" ;
     dma:languageRole "primary"
 ] ;
-dc:language [
+dma:language [
     lexvo:iso639P3PCode "yua" ;
     dma:languageRole "subject"
 ] ;
+dc:language "spa" ;
+dc:language "yua" ;
 dc:title "Yucatec Maya field recordings (Hanks, 1979-1987) Yucatán Maya" ;
 dc:type "PhysicalObject" ;
 dcterms:rights "Restricted" ;
