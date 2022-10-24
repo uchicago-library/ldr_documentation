@@ -39,7 +39,7 @@
   {'}{{'}}1
 }
 
-\date{2022-09-09}
+\date{2022-10-23}
 \title{Europeana Data Model (EDM) Template for use with University of Chicago Library Digital Collections}
 \author{Charles Blair}
 \hypersetup{
@@ -92,15 +92,19 @@ Note that when an ore:ResourceMap is being created, the values of dcterms:create
 
 \subsection{ore:Aggregation}
 
-The following are mandatory Eurpeana elememnts for the \textit{ore:Aggregation}.
+The following are mandatory Europeana elements for the \textit{ore:Aggregation}.
 
 \begin{itemize}
-
+\item \textbf{edm:aggregatedCHO}
+\item \textbf{edm:dataProvider}
 \item Either \textit{edm:isShownAt} or \textit{edm:isShownBy}. If \textit{edm:isShownBy} is used, then \textit{edm:object} must be supplied. (See 3.2.27.)
-
+\item \textbf{edm:provider}
 \item \textbf{edm:rights}
+\end{itemize}
 
-The following is an example of an ore:Aggregation. It indicates the other required elements.
+% (Use \textbf{edm:ugc} is for crowd-sourced material; it is mandatory only if applicable.)
+
+The following is an example of an ore:Aggregation.
 
 \begin{verbatim}
 <z9m865s34c01/aggregation>
@@ -114,8 +118,6 @@ ore:isDescribedBy <z9m865s34c01/rem> ;
 a ore:Aggregation .
 \end{verbatim}  
 
-\end{itemize}
-
 \subsection{edm:ProvidedCHO}
 The following are mandatory Europeana elements for the \textit{edm:ProvidedCHO}.
 
@@ -123,26 +125,22 @@ The following are mandatory Europeana elements for the \textit{edm:ProvidedCHO}.
 
   \item Either \textit{dc:description} or \underline{\textit{dc:title}} or both. Local usage requires \underline{dc:title}.
 
-  \item One or more the following: \textit{dc:coverage}, \underline{\textit{dcterms:spatial}}, \textit{dc:subject}, \textit{dcterms:temporal}, or \textit{dc:type}. Local usage requires \underline{dcterms:spatial} and \underline{dcterms:temporal}. 
+  \item One or more the following: \textit{dc:coverage}, \underline{\textit{dcterms:spatial}}, \textit{dc:subject}, \textit{dcterms:temporal}, or \textit{dc:type}. Local usage requires \underline{dcterms:spatial} and \underline{dcterms:temporal}. Values from Getty's Thesaurus of Geographical Names (TGN) are used.
 
   \item \textit{dc:language} for TEXT objects. It is strongly recommended for other object types if there is a language aspect. Language codes conforming to ISO 639 are used as values.
 
   \item \textbf{edm:type} must occur and must use one of the following values (in upper case): TEXT, IMAGE, SOUND, VIDEO or 3D.
 \end{itemize}
 
-In addition to what is specified above, the following are also required by local usage for the \textit{edm:providedCHO}.
+In addition to what is specified above, the following are also required by local usage for the \textit{edm:ProvidedCHO}.
 \begin{itemize}
-  \item \underline{dcterms:identifier}. Literal values for locally-created ARK identifiers are used, e.g., "https://n2t.net/ark:61001/z9m865s34c01" (dc:identifier may be used for any original identifiers occurring in provided metadata)
+  \item \underline{dcterms:identifier}. String-literal values for locally-created ARK identifiers are used, e.g., "https://n2t.net/ark:61001/z9m865s34c01" (dc:identifier may be used for any original identifiers occurring in provided metadata)
 
-  \item \underline{dcterms:spatial}. Literal values from Getty's Thesaurus of Geographical Names (TGN) are used.
-
-  \item \underline{dcterms:temporal}. Literal values conforming to ISO 8601 are used.
-
-  \item \underline{dcterms:format}. Literal values conforming to Internet Media Types (MIME) are used (http://www.iana.org/assignments/media-types/).
+  \item \underline{dcterms:temporal}. String-literal values conforming to ISO 8601 are used.
 
 \end{itemize}
 
-For the following, see ``DCMI Kernel Metadata Community: Kernel Metadata and Electronic Resource Citations (ERCs)'', Section 3, Kernel Stories, https://www.dublincore.org/groups/kernel/spec/\#anchor3. They will support responses to queries about the metadata when the appropriate syntax is provided to an ARK resolver: ``ARK resolvers must support the `?info' inflection for requesting metadata.'' (https://datatracker.ietf.org/doc/html/draft-kunze-ark-28\#section-1.2. See further in that document for the ?info infletion and the use of Electronic Resource Citations [ERCs].)
+For the following, see ``DCMI Kernel Metadata Community: Kernel Metadata and Electronic Resource Citations (ERCs)'', Section 3, Kernel Stories, https://www.dublincore.org/groups/kernel/spec/\#anchor3. They will support responses to queries about the metadata when the appropriate syntax is provided to an ARK resolver: ``ARK resolvers must support the `?info' inflection for requesting metadata.'' (https://datatracker.ietf.org/doc/html/draft-kunze-ark-28\#section-1.2. See further in that document for the ?info inflection and the use of Electronic Resource Citations [ERCs].)
 
 \begin{itemize}
 \item \underline{erc:who} The value is drawn from dc[terms]:creator, dc[terms]:contributor, or dc[terms]:publisher, in that order.
@@ -153,31 +151,16 @@ For the following, see ``DCMI Kernel Metadata Community: Kernel Metadata and Ele
 
 Any values which cannot be assigned should be drawn from ``DCMI Kernel Metadata Community: Kernel Metadata and Electronic Resource Citations (ERCs)'', Section 9.3, Special Kernel Standardized Value Codes, https://www.dublincore.org/groups/kernel/spec/\#anchor16. For a local copy see ``Null Values'', https://dldc.lib.uchicago.edu/dl/nullValues.html.
 
-The following is an example of an edm:ProvidedCHO. This example does not include other elements specific to this digital collection which may also be included in the edm:ProvidedCHO. It only includes those elements discussed in this section.
+The following is an example of an edm:ProvidedCHO. This example does not include elements specific to a particular digital collection which may also be included in the edm:ProvidedCHO. It only includes those elements discussed in this section.
 
 \begin{verbatim}
 <z9m865s34c01>
-dc:contributor [
-    foaf:name "Hanks, William F." ;
-    olac:role "interviewer"
-] ;
-dc:contributor [
-    foaf:name "Unnamed contributor (male)" ;
-    olac:role "consultant"
-] ;
+dc:contributor "Hanks, William F." ;
+dc:contributor "Unnamed contributor (male)" ;
 dc:description "Contents: \"History of Cooperativa\"" ;
-dc:identifier "5548" ;
-dc:language [
-    lexvo:iso639P3PCode "spa" ;
-    dma:languageRole "primary"
-] ;
-dc:language [
-    lexvo:iso639P3PCode "yua" ;
-    dma:languageRole "subject"
-] ;
+dc:language "spa" ;
+dc:language "yua" ;
 dc:title "Yucatec Maya field recordings (Hanks, 1979-1987) Yucatán Maya" ;
-dc:type "PhysicalObject" ;
-dcterms:rights "Restricted" ;
 dcterms:spatial "7005600" ;
 dcterms:temporal "1979" ;
 dcterms:identifier "https://n2t.net/ark:61001/z9m865s34c01" ;
@@ -205,7 +188,7 @@ Note that when an ore:ResourceMap is being created, the values of dcterms:create
 
 \subsection{edm:WebResource}
 
-The following are required for an edm:WebResource. The requirements are indicated by example.
+The following are required for an edm:WebResource. The requirements are indicated by example. For \underline{dcterms:format}, string-literal values conforming to Internet Media Types (MIME) are used (http://www.iana.org/assignments/media-types/).
 
 \begin{verbatim}
 <z9m865s34c01/file.wav> 
@@ -230,6 +213,8 @@ a rdfs:Resource . # This is the default type.
 
 \pagebreak[4]
 \section{Example}
+This example consists of the required elements plus those specific to a particular digital collection.
+
 \lstinputlisting[extendedchars=false,breaklines=true]{template.ttl}
 
 \end{document}

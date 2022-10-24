@@ -1,7 +1,8 @@
 @base <https://ark.lib.uchicago.edu/ark:61001/> .
+@prefix ac: <http://www.audiocommons.org/ac-ontology/aco> .
 @prefix aes60-2011: <https://www.aes.org/publications/standards/> .
-@prefix ark: <https://datatracker.ietf.org/doc/html/draft-kunze-ark-29> .
-@prefix audioMD: <http://www.loc.gov/audioMD> .
+@prefix ark: <https://datatracker.ietf.org/doc/html/draft-kunze-ark-29/> .
+@prefix audioMD: <https://www.loc.gov/standards/amdvmd/htmldoc/audioMD.html#> .
 @prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
 @prefix cts: <http://marklogic.com/cts#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
@@ -15,7 +16,7 @@
 @prefix lexvo: <https://www.iso.org/standard/39534.html> .
 @prefix madsrdf: <http://www.loc.gov/mads/rdf/v1#...http://www.w3.org/XML/1998/namespace> .
 @prefix mix: <http://www.loc.gov/mix/v20/> .
-@prefix olac: <http://www.language-archives.org/OLAC/metadata.html> .
+@prefix olac: <http://www.language-archives.org/REC/role.html#> .
 @prefix ore: <http://www.openarchives.org/ore/terms/> .
 @prefix premis: <https://id.loc.gov/ontologies/premis-3-0-0.html> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -46,16 +47,20 @@ ore:isDescribedBy <z9m865s34c01/rem> ;
 a ore:Aggregation .
 
 <z9m865s34c01>
-dc:contributor [
+dc:contributor "Hanks, William F." ;
+dc:contributor "Unnamed contributor (male)" ;
+dma:contributor [
     foaf:name "Hanks, William F." ;
     olac:role "interviewer"
 ] ;
-dc:contributor [
+dma:contributor [
     foaf:name "Unnamed contributor (male)" ;
     olac:role "consultant"
 ] ;
 dc:description "Contents: \"History of Cooperativa\"" ;
 dc:identifier "5548" ;
+dc:language "spa" ;
+dc:language "yua" ;
 dma:language [
     lexvo:iso639P3PCode "spa" ;
     dma:languageRole "primary"
@@ -64,8 +69,6 @@ dma:language [
     lexvo:iso639P3PCode "yua" ;
     dma:languageRole "subject"
 ] ;
-dc:language "spa" ;
-dc:language "yua" ;
 dc:title "Yucatec Maya field recordings (Hanks, 1979-1987) Yucatán Maya" ;
 dc:type "PhysicalObject" ;
 dcterms:rights "Restricted" ;
