@@ -39,7 +39,7 @@
   {'}{{'}}1
 }
 
-\date{2022-10-23}
+\date{2022-11-02}
 \title{Europeana Data Model (EDM) Template for use with University of Chicago Library Digital Collections}
 \author{Charles Blair}
 \hypersetup{
@@ -125,7 +125,7 @@ The following are mandatory Europeana elements for the \textit{edm:ProvidedCHO}.
 
   \item Either \textit{dc:description} or \underline{\textit{dc:title}} or both. Local usage requires \underline{dc:title}.
 
-  \item One or more the following: \textit{dc:coverage}, \underline{\textit{dcterms:spatial}}, \textit{dc:subject}, \textit{dcterms:temporal}, or \textit{dc:type}. Local usage requires \underline{dcterms:spatial} and \underline{dcterms:temporal}. Values from Getty's Thesaurus of Geographical Names (TGN) are used.
+  \item One or more the following: \textit{dc:coverage}, \underline{\textit{dcterms:spatial}}, \textit{dc:subject}, \textit{dcterms:temporal}, or \textit{dc:type}. Local usage requires \underline{dcterms:spatial}. Values from Getty's Thesaurus of Geographical Names (TGN) are used.
 
   \item \textit{dc:language} for TEXT objects. It is strongly recommended for other object types if there is a language aspect. Language codes conforming to ISO 639 are used as values.
 
@@ -136,7 +136,7 @@ In addition to what is specified above, the following are also required by local
 \begin{itemize}
   \item \underline{dcterms:identifier}. String-literal values for locally-created ARK identifiers are used, e.g., "https://n2t.net/ark:61001/z9m865s34c01" (dc:identifier may be used for any original identifiers occurring in provided metadata)
 
-  \item \underline{dcterms:temporal}. String-literal values conforming to ISO 8601 are used.
+  \item \underline{dc:date}. String-literal values conforming to ISO 8601 are used.
 
 \end{itemize}
 
@@ -145,7 +145,7 @@ For the following, see ``DCMI Kernel Metadata Community: Kernel Metadata and Ele
 \begin{itemize}
 \item \underline{erc:who} The value is drawn from dc[terms]:creator, dc[terms]:contributor, or dc[terms]:publisher, in that order.
 \item \underline{erc:what} The value is drawn from dc:title or dc:description, in that order.
-\item \underline{erc:when} The value is drawn from dcterms:temporal.
+\item \underline{erc:when} The value is drawn from dc:date.
 \item \underline{erc:where} The value is drawn from dcterms:identifier.
 \end{itemize}
 
@@ -158,6 +158,7 @@ The following is an example of an edm:ProvidedCHO. This example does not include
 dc:contributor "Hanks, William F." ;
 dc:contributor "Unnamed contributor (male)" ;
 dc:description "Contents: \"History of Cooperativa\"" ;
+dc:identifier "#z9m865s34c01" ;
 dc:language "spa" ;
 dc:language "yua" ;
 dc:title "Yucatec Maya field recordings (Hanks, 1979-1987) Yucatán Maya" ;
@@ -192,6 +193,7 @@ The following are required for an edm:WebResource. The requirements are indicate
 
 \begin{verbatim}
 <z9m865s34c01/file.wav> 
+dc:identifier "https://n2t.net/ark:61001/z9m865s34c01" ; # a persistent link to the resource
 dcterms:format "audio/x-wav" ;
 premis:fixity [
   rdf:type <https://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions/sha512>;
@@ -213,7 +215,7 @@ a rdfs:Resource . # This is the default type.
 
 \pagebreak[4]
 \section{Example}
-This example consists of the required elements plus those specific to a particular digital collection.
+This example consists of the required elements plus those specific to a particular digital collection. If anything in this example contradicts anything in the above, the above remains authoritative.
 
 \lstinputlisting[extendedchars=false,breaklines=true]{template.ttl}
 

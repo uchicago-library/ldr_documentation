@@ -24,6 +24,7 @@
 @prefix role: <http://id.loc.gov/vocabulary/relators/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix tgn: <http://vocab.getty.edu/tgn/> .
+@prefix tgno: <http://vocab.getty.edu/ontology#> .
 @prefix ucla: <http://lib.uchicago.edu/ucla/> .
 @prefix vra: <http://purl.org/vra/> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
