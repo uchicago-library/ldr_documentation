@@ -43,7 +43,7 @@
 %%% Upload template.tex, template.ttl, and template.pdf to https://github.com/uchicago-library/ldr_documentation
 %%%
 
-\date{2022-12-14}
+\date{2022-12-21}
 \title{Europeana Data Model (EDM) Template for use with University of Chicago Library Digital Collections}
 \author{Charles Blair}
 \hypersetup{
@@ -105,6 +105,8 @@ The following are mandatory Europeana elements for the \textit{ore:Aggregation}.
 \item \textbf{edm:provider}
 \item \textbf{edm:rights}
 \end{itemize}
+
+``Use edm:isShownAt if you display the digital object with extra information (such as header, banner, etc.). Also use it for digital objects embedded in HTML pages (even when the page is extremely simple).'' \textit{Definition of the Europeana Data Model}, Section 3.2.21.Is Shown At. ``[The property edm:isShownBy] will lead users to the digital object on the provider's website where they can view or play it. The digital object needs to be directly accessible by the URL and reasonably independent at that location. If the URL includes short copyright information or minimal navigation tools it can be entered in edm:isShownBy. Note: Use edm:isShownAt for digital objects embedded in HTML pages (even where the page is extremely simple).'' \textit{Definition of the Europeana Data Model}, Section 3.2.22.Is Shown By.
 
 % (Use \textbf{edm:ugc} is for crowd-sourced material; it is mandatory only if applicable.)
 
