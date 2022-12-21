@@ -41,6 +41,7 @@ a ore:ResourceMap .
 edm:aggregatedCHO <z9m865s34c01> ;
 edm:dataProvider "University of Chicago Library" ;
 edm:hasView <z9m865s34c01/file.wav> ;
+edm:isShownAt <z9m865s34c01/streaming> ;
 edm:isShownBy <z9m865s34c01/file.wav> ;
 edm:object <z9m865s34c01/file.wav> ;
 edm:provider "University of Chicago Library" ;
