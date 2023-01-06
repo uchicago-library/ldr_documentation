@@ -39,6 +39,7 @@ a ore:ResourceMap .
 
 <z9m865s34c01/aggregation>
 edm:aggregatedCHO <z9m865s34c01> ;
+edm:datasetName "CAILLA" ; 
 edm:dataProvider "University of Chicago Library" ;
 edm:hasView <z9m865s34c01/file.wav> ;
 edm:isShownAt <z9m865s34c01/website> ;
