@@ -78,12 +78,12 @@ dc:type "PhysicalObject" ;
 dcterms:rights "Restricted" ;
 dcterms:spatial "7005600" ;
 dcterms:temporal "1979" ;
-dcterms:identifier "https://n2t.net/ark:61001/z9m865s34c01" ;
+dcterms:identifier "https://n2t.net/ark:61001/z9m865s34c01/website" ;
 edm:type "SOUND" ;
 erc:who "Hanks, William F., interviewer; Unnamed contributor (male), consultant" ;
 erc:what "Yucatec Maya field recordings (Hanks, 1979-1987) Yucatán Maya" ;
 erc:when "1979" ;
-erc:where "https://n2t.net/ark:61001/z9m865s34c01" ;
+erc:where "https://n2t.net/ark:61001/z9m865s34c01/website" ;
 a edm:ProvidedCHO.
 
 <z9m865s34c01/file.dc.xml>

@@ -43,7 +43,7 @@
 %%% Upload template.tex, template.ttl, and template.pdf to https://github.com/uchicago-library/ldr_documentation
 %%%
 
-\date{2023-02-06}
+\date{2023-02-07}
 \title{Europeana Data Model (EDM) Template for use with University of Chicago Library Digital Collections}
 \author{Charles Blair}
 \hypersetup{
@@ -101,7 +101,8 @@ The following are mandatory Europeana elements for the \textit{ore:Aggregation}.
 \begin{itemize}
 \item \textbf{edm:aggregatedCHO}
 \item \textbf{edm:dataProvider}
-\item Either \textit{edm:isShownAt} or \textit{edm:isShownBy}. If \textit{edm:isShownBy} is used, then \textit{edm:object} must be supplied. (See 3.2.27.)
+\item Either \textit{edm:isShownAt} or \textit{edm:isShownBy} (... ``using both is recommended!'')\footnote{https://pro.europeana.eu/files/Europeana\_Professional/Share\_your\_data/
+Technical\_requirements/EDM\_Documentation/EDM\_Mapping\_Guidelines\_v2.4\_102017.pdf, section 4.3, p. 29}. If \textit{edm:isShownBy} is used, then \textit{edm:object} must be supplied. (See 3.2.27.)
 \item \textbf{edm:provider}
 \item \textbf{edm:rights}
 \end{itemize}
@@ -124,7 +125,7 @@ accessible by the URL and reasonably independent at that location. If the
 URL includes short copyright information or minimal navigation tools it can
 be entered in edm:isShownBy.'' \textit{Definition of the Europeana Data Model}, Section 3.2.22.Is Shown By.
 
-The above suggests that a digital object displayed on web pages with full information context should be indicated by edm:isShownAt, while a digital object in the best resolution should be indicated by edm:isShownBy. By convention, we indicate the former by appending ``/website'' to the URL containing the ARK identifier, and the latter by appending ``file.tif'', ``file.wav'', etc. If edm:isShownBy is used edm:object must be used. ``This will often be the same URL as given in edm:isShownBy.'' \textit{Definition of the Europeana Data Model}, Section 3.2.27.Object.
+The above suggests that a digital object displayed on web pages with full information context should be indicated by edm:isShownAt, while a digital object in the best resolution should be indicated by edm:isShownBy. By convention, we indicate the former by appending ``/website'' to the URL containing the ARK identifier, and the latter by appending ``/file.tif'', ``/file.wav'', etc. If edm:isShownBy is used then edm:object must also be used. ``This will often be the same URL as given in edm:isShownBy.'' \textit{Definition of the Europeana Data Model}, Section 3.2.27.Object.
 
 % (Use \textbf{edm:ugc} is for crowd-sourced material; it is mandatory only if applicable.)
 
@@ -153,33 +154,33 @@ The following are mandatory Europeana elements for the \textit{edm:ProvidedCHO}.
 
   \item Either \textit{dc:description} or \underline{\textit{dc:title}} or both. Local usage requires \underline{dc:title}.
 
-  \item One or more the following: \textit{dc:coverage}, \underline{\textit{dcterms:spatial}}, \textit{dc:subject}, \textit{dcterms:temporal}, or \textit{dc:type}. Local usage requires \underline{dcterms:spatial}. Values from Getty's Thesaurus of Geographical Names (TGN) are used.
+  \item One or more the following: \textit{dc:coverage}, \underline{\textit{dcterms:spatial}}, \textit{dc:subject}, \textit{dcterms:temporal}, or \textit{dc:type}. Local usage requires \underline{dc:type}. Values should be drawn from the ``DCMI Type Vocabulary'', https://www.dublincore.org/specifications/dublin-core/dcmi-terms/\#section-7 . ``Note that digital representations of, or surrogates for, [physical] objects should use Image, Text or one of the other types.'' Local usage requires \underline{dcterms:spatial}. Values from Getty's Thesaurus of Geographical Names (TGN) are used.
 
   \item \textit{dc:language} for TEXT objects. It is strongly recommended for other object types if there is a language aspect. Language codes conforming to ISO 639 are used as values.
 
-  \item \textbf{edm:type} must occur and must use one of the following values (in upper case): TEXT, IMAGE, SOUND, VIDEO or 3D.
+  \item \textbf{edm:type} must occur and must use one of the following values (in upper case): TEXT, IMAGE, SOUND, VIDEO or 3D. Map DCMI types to EDM types as follows: ``Text'' -> ``TEXT''; ``Image'' -> ``IMAGE''; ``Sound'' -> ''SOUND''; ``MovingImage'' -> ``VIDEO''. 
 \end{itemize}
 
 In addition to what is specified above, the following are also required by local usage for the \textit{edm:ProvidedCHO}.
 \begin{itemize}
-  \item \underline{dcterms:identifier}. String-literal values for locally-created ARK identifiers are used, e.g., "https://n2t.net/ark:61001/z9m865s34c01" (dc:identifier may be used for any original identifiers occurring in provided metadata)
+  \item \underline{dcterms:identifier}. String-literal values for locally-created ARK identifiers are used, e.g., "https://n2t.net/ark:61001/z9m865s34c01/website" (\underline{dc:identifier} may be used for any original identifiers occurring in provided metadata).
 
-  \item \underline{dc:date}. String-literal values conforming to ISO 8601 are used.
+  \item \underline{dc:date}. String-literal values conforming to ISO 8601 or the Extended Date/Time Format Specification (EDTF) (https://www.loc.gov/standards/datetime/) are used in that order.
 
 \end{itemize}
 
 For the following, see ``DCMI Kernel Metadata Community: Kernel Metadata and Electronic Resource Citations (ERCs)'', Section 3, Kernel Stories, https://www.dublincore.org/groups/kernel/spec/\#anchor3. They will support responses to queries about the metadata when the appropriate syntax is provided to an ARK resolver: ``ARK resolvers must support the `?info' inflection for requesting metadata.'' (https://datatracker.ietf.org/doc/html/draft-kunze-ark-28\#section-1.2. See further in that document for the ?info inflection and the use of Electronic Resource Citations [ERCs].)
 
 \begin{itemize}
-\item \underline{erc:who} The value is drawn from dc[terms]:creator, dc[terms]:contributor, or dc[terms]:publisher, in that order.
-\item \underline{erc:what} The value is drawn from dc:title or dc:description, in that order.
+\item \underline{erc:who} The value is drawn from dc[terms]:creator, dc[terms]:contributor, or dc[terms]:publisher, in that order. If none of those have values, then use \underline{erc:who ``(:unkn) unknown''}.
+\item \underline{erc:what} The value is drawn from dc:title or dc:description, in that order. Note that because local usage always stipulates the use of dc:title, local usage is to draw the value from dc:title.
 \item \underline{erc:when} The value is drawn from dc:date.
 \item \underline{erc:where} The value is drawn from dcterms:identifier.
 \end{itemize}
 
 Any values which cannot be assigned should be drawn from ``DCMI Kernel Metadata Community: Kernel Metadata and Electronic Resource Citations (ERCs)'', Section 9.3, Special Kernel Standardized Value Codes, https://www.dublincore.org/groups/kernel/spec/\#anchor16. For a local copy see ``Null Values'', https://dldc.lib.uchicago.edu/dl/nullValues.html.
 
-The following is an example of an edm:ProvidedCHO. This example does not include elements specific to a particular digital collection which may also be included in the edm:ProvidedCHO. It only includes those elements discussed in this section.
+The following is an example of an edm:ProvidedCHO. This example does not include any elements specific to a particular digital collection which may also be included in the edm:ProvidedCHO. It includes only those elements discussed in this section.
 
 \begin{verbatim}
 <z9m865s34c01>
