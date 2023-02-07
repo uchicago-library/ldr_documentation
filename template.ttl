@@ -74,7 +74,7 @@ dma:language [
     dma:languageRole "subject"
 ] ;
 dc:title "Yucatec Maya field recordings (Hanks, 1979-1987) Yucatán Maya" ;
-dc:type "PhysicalObject" ;
+dc:type "Sound" ;
 dcterms:rights "Restricted" ;
 dcterms:spatial "7005600" ;
 dcterms:temporal "1979" ;
