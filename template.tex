@@ -43,7 +43,7 @@
 %%% Upload template.tex, template.ttl, and template.pdf to https://github.com/uchicago-library/ldr_documentation
 %%%
 
-\date{2023-01-06}
+\date{2023-02-06}
 \title{Europeana Data Model (EDM) Template for use with University of Chicago Library Digital Collections}
 \author{Charles Blair}
 \hypersetup{
@@ -106,7 +106,25 @@ The following are mandatory Europeana elements for the \textit{ore:Aggregation}.
 \item \textbf{edm:rights}
 \end{itemize}
 
-``Use edm:isShownAt if you display the digital object with extra information (such as header, banner, etc.). Also use it for digital objects embedded in HTML pages (even when the page is extremely simple).'' \textit{Definition of the Europeana Data Model}, Section 3.2.21.Is Shown At. ``[The property edm:isShownBy] will lead users to the digital object on the provider's website where they can view or play it. The digital object needs to be directly accessible by the URL and reasonably independent at that location. If the URL includes short copyright information or minimal navigation tools it can be entered in edm:isShownBy. Note: Use edm:isShownAt for digital objects embedded in HTML pages (even where the page is extremely simple).'' \textit{Definition of the Europeana Data Model}, Section 3.2.22.Is Shown By.
+The differences between edm:isShownAt and edm:isShownBy is explained as follows.
+
+edm:isShownAt: ``An unambiguous URL reference to the digital object on the provider’s web
+site in its full information context. ... This property will contain a URL that will be active in the Europeana
+interface. It will lead users to the digital object displayed on the provider’s
+web site in its full information context. Use edm:isShownAt if you display the
+digital object with extra information (such as header, banner etc). Also use it
+for digital objects embedded in HTML pages (even where the page is
+extremely simple).'' \textit{Definition of the Europeana Data Model}, Section 3.2.21.Is Shown At.
+
+edm:isShownBy: ``An unambiguous URL reference to the digital object on the provider’s web
+site in the best available resolution/quality. ... This property will contain a URL that will be active in the Europeana
+interface. It will lead users to the digital object on the provider’s website
+where they can view or play it. The digital object needs to be directly
+accessible by the URL and reasonably independent at that location. If the
+URL includes short copyright information or minimal navigation tools it can
+be entered in edm:isShownBy.'' \textit{Definition of the Europeana Data Model}, Section 3.2.22.Is Shown By.
+
+The above suggests that a digital object displayed on web pages with full information context should be indicated by edm:isShownAt, while a digital object in the best resolution should be indicated by edm:isShownBy. By convention, we indicate the former by appending ``/website'' to the URL containing the ARK identifier, and the latter by appending ``file.tif'', ``file.wav'', etc. If edm:isShownBy is used edm:object must be used. ``This will often be the same URL as given in edm:isShownBy.'' \textit{Definition of the Europeana Data Model}, Section 3.2.27.Object.
 
 % (Use \textbf{edm:ugc} is for crowd-sourced material; it is mandatory only if applicable.)
 
@@ -117,6 +135,7 @@ The following is an example of an ore:Aggregation.
 edm:aggregatedCHO <z9m865s34c01> ;
 edm:datasetName "CAILLA" ;
 edm:dataProvider "University of Chicago Library" ;
+edm:isShownAt <z9m865s34c01/website> ;
 edm:isShownBy <z9m865s34c01/file.wav> ;
 edm:object <z9m865s34c01/file.wav> ;
 edm:provider "University of Chicago Library" ;
