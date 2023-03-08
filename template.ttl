@@ -41,9 +41,9 @@ a ore:ResourceMap .
 edm:aggregatedCHO <z9m865s34c01> ;
 edm:datasetName "CAILLA" ; 
 edm:dataProvider "University of Chicago Library" ;
-edm:hasView <z9m865s34c01/file.wav> ;
+edm:hasView <z9m865s34c01/file.wav> ; # omit this for MLC series/collection-level records
 edm:isShownAt <z9m865s34c01/website> ;
-edm:isShownBy <z9m865s34c01/file.wav> ;
+edm:isShownBy <z9m865s34c01/file.wav> ; # omit this for MLC series/collection-level records
 edm:object <z9m865s34c01/file.wav> ;
 edm:provider "University of Chicago Library" ;
 edm:rights <https://rightsstatements.org/vocab/NoC-US/1.0/> ;
@@ -75,10 +75,10 @@ dma:language [
 ] ;
 dc:title "Yucatec Maya field recordings (Hanks, 1979-1987) Yucatán Maya" ;
 dc:type "Sound" ;
+dcterms:identifier "https://n2t.net/ark:61001/z9m865s34c01/website" ;
 dcterms:rights "Restricted" ;
 dcterms:spatial "7005600" ;
 dcterms:temporal "1979" ;
-dcterms:identifier "https://n2t.net/ark:61001/z9m865s34c01/website" ;
 edm:type "SOUND" ;
 erc:who "Hanks, William F., interviewer; Unnamed contributor (male), consultant" ;
 erc:what "Yucatec Maya field recordings (Hanks, 1979-1987) Yucatán Maya" ;
