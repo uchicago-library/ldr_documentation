@@ -30,27 +30,26 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<z9m865s34c01/rem>
+<b2nw3wm8552h/rem>
 dcterms:creator <https://dldc.lib.uchicago.edu/> ;
 dcterms:created "2022-02-09T11:21:52-06:00"^^xsd:dateTime ;
 dcterms:modified "2022-02-09T11:21:52-06:00"^^xsd:dateTime ;
-ore:describes <z9m865s34c01/aggregation> ;
+ore:describes <b2nw3wm8552h/aggregation> ;
 a ore:ResourceMap .
 
-<z9m865s34c01/aggregation>
-edm:aggregatedCHO <z9m865s34c01> ;
+<b2nw3wm8552h/aggregation>
+edm:aggregatedCHO <b2nw3wm8552h> ;
 edm:datasetName "CAILLA" ; 
 edm:dataProvider "University of Chicago Library" ;
-edm:hasView <z9m865s34c01/file.wav> ; # omit this for MLC series/collection-level records
-edm:isShownAt <z9m865s34c01/website> ;
-edm:isShownBy <z9m865s34c01/file.wav> ; # omit this for MLC series/collection-level records
-edm:object <z9m865s34c01/file.wav> ;
+edm:isShownAt <b2nw3wm8552h/website> ;
+edm:isShownBy <c8m342c21s02> ; # omit this for MLC series/collection-level records
+edm:object <c8m342c21s02> ; # omit this for MLC series/collection-level records
 edm:provider "University of Chicago Library" ;
 edm:rights <https://rightsstatements.org/vocab/NoC-US/1.0/> ;
-ore:isDescribedBy <z9m865s34c01/rem> ;
+ore:isDescribedBy <b2nw3wm8552h/rem> ;
 a ore:Aggregation .
 
-<z9m865s34c01>
+<b2nw3wm8552h>
 dc:contributor "Hanks, William F." ;
 dc:contributor "Unnamed contributor (male)" ;
 dma:contributor [
@@ -75,7 +74,7 @@ dma:language [
 ] ;
 dc:title "Yucatec Maya field recordings (Hanks, 1979-1987) Yucatán Maya" ;
 dc:type "Sound" ;
-dcterms:identifier "https://n2t.net/ark:61001/z9m865s34c01/website" ;
+dcterms:identifier "https://n2t.net/ark:61001/b2nw3wm8552h/website" ;
 dcterms:rights "Restricted" ;
 dcterms:spatial "7005600" ;
 dcterms:temporal "1979" ;
@@ -83,16 +82,16 @@ edm:type "SOUND" ;
 erc:who "Hanks, William F., interviewer; Unnamed contributor (male), consultant" ;
 erc:what "Yucatec Maya field recordings (Hanks, 1979-1987) Yucatán Maya" ;
 erc:when "1979" ;
-erc:where "https://n2t.net/ark:61001/z9m865s34c01/website" ;
+erc:where "https://n2t.net/ark:61001/b2nw3wm8552h/website" ;
 a edm:ProvidedCHO.
 
-<z9m865s34c01/file.dc.xml>
+<b2nw3wm8552h/file.dc.xml>
 dc:format "application/xml" ;
 ore:proxyFor <b2nw3wm8552h> ;
 ore:proxyIn <b2nw3wm8552h/aggregation> ;
 a ore:Proxy .
 
-<z9m865s34c01/file.wav> 
+<b2nw3wm8552h/file.wav> 
 dcterms:format "audio/x-wav" ;
 premis:fixity [
   rdf:type <https://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions/sha512> ;

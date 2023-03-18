@@ -43,7 +43,7 @@
 %%% Upload template.tex, template.ttl, and template.pdf to https://github.com/uchicago-library/ldr_documentation
 %%%
 
-\date{2023-03-08}
+\date{2023-03-17}
 \title{Europeana Data Model (EDM) Template for use with University of Chicago Library Digital Collections}
 \author{Charles Blair}
 \hypersetup{
@@ -84,11 +84,11 @@ Technical\_requirements/EDM\_Documentation//EDM\_Definition\_v5.2.8\_102017.pdf}
 The following are required for an edm:ResourceMap. The requirements are indicated by example.
 
 \begin{verbatim}
-<z9m865s34c01/rem>
+<b9m865s34c01/rem>
 dcterms:creator <https://dldc.lib.uchicago.edu/> ;
 dcterms:created "2022-02-09T11:21:52-06:00"^^xsd:dateTime ;
 dcterms:modified "2022-02-09T11:21:52-06:00"^^xsd:dateTime ;
-ore:describes <z9m865s34c01/aggregation> ;
+ore:describes <b9m865s34c01/aggregation> ;
 a ore:ResourceMap .
 \end{verbatim}
 
@@ -125,23 +125,23 @@ accessible by the URL and reasonably independent at that location. If the
 URL includes short copyright information or minimal navigation tools it can
 be entered in edm:isShownBy.'' \textit{Definition of the Europeana Data Model}, Section 3.2.22.Is Shown By.
 
-The above suggests that a digital object displayed on web pages with full information context should be indicated by edm:isShownAt, while a digital object in the best resolution should be indicated by edm:isShownBy. By convention, we indicate the former by appending ``/website'' to the URL containing the ARK identifier, and the latter by appending ``/file.tif'', ``/file.wav'', etc. If edm:isShownBy is used then edm:object must also be used. ``This will often be the same URL as given in edm:isShownBy.'' \textit{Definition of the Europeana Data Model}, Section 3.2.27.Object.
+The above suggests that a digital object displayed on web pages with full information context should be indicated by edm:isShownAt, while a digital object in the best resolution should be indicated by edm:isShownBy. By convention, we indicate the former by appending ``/website'' to the URL containing the ARK identifier, and the latter by appending ``/file.tif'', ``/file.wav'', etc. if the file is going to be retrieved from the OCFL hierarchy on disk; otherwise it should have its own ARK identifier, e.g., if it is going to be served by an external system such as Panopto. If edm:isShownBy is used then edm:object must also be used. ``This will often be the same URL as given in edm:isShownBy.'' \textit{Definition of the Europeana Data Model}, Section 3.2.27.Object.
 
 % (Use \textbf{edm:ugc} is for crowd-sourced material; it is mandatory only if applicable.)
 
 The following is an example of an ore:Aggregation.
 
 \begin{verbatim}
-<z9m865s34c01/aggregation>
-edm:aggregatedCHO <z9m865s34c01> ;
+<b9m865s34c01/aggregation>
+edm:aggregatedCHO <b9m865s34c01> ;
 edm:datasetName "CAILLA" ;
 edm:dataProvider "University of Chicago Library" ;
-edm:isShownAt <z9m865s34c01/website> ;
-edm:isShownBy <z9m865s34c01/file.wav> ;
-edm:object <z9m865s34c01/file.wav> ;
+edm:isShownAt <b9m865s34c01/website> ;
+edm:isShownBy <c8m342c21s02> ;
+edm:object <c8m342c21s02> ;
 edm:provider "University of Chicago Library" ;
 edm:rights <https://rightsstatements.org/vocab/NoC-US/1.0/> ;
-ore:isDescribedBy <z9m865s34c01/rem> ;
+ore:isDescribedBy <b9m865s34c01/rem> ;
 a ore:Aggregation .
 \end{verbatim}  
 
@@ -183,7 +183,7 @@ Any values which cannot be assigned should be drawn from ``DCMI Kernel Metadata 
 The following is an example of an edm:ProvidedCHO. This example does not include any elements specific to a particular digital collection which may also be included in the edm:ProvidedCHO. It includes only those elements discussed in this section.
 
 \begin{verbatim}
-<z9m865s34c01>
+<b9m865s34c01>
 dc:contributor "Hanks, William F." ;
 dc:contributor "Unnamed contributor (male)" ;
 dc:description "Contents: \"History of Cooperativa\"" ;
@@ -206,7 +206,7 @@ a edm:ProvidedCHO.
 The following are required for an ore:Proxy, which is optional; it is used only if one is associating a file of original descriptive metadata, e.g., MARCXML or Dublin Core, with the aggregation. The requirements are indicated by example. 
 
 \begin{verbatim}
-<z9m865s34c01/file.dc.xml>
+<b9m865s34c01/file.dc.xml>
 dc:format "application/xml" ;
 ore:proxyFor <b2nw3wm8552h> ;
 ore:proxyIn <b2nw3wm8552h/aggregation> ;
@@ -220,7 +220,7 @@ Note that when an ore:ResourceMap is being created, the values of dcterms:create
 The following are required for an edm:WebResource. The requirements are indicated by example. For \underline{dcterms:format}, string-literal values conforming to Internet Media Types (MIME) are used (http://www.iana.org/assignments/media-types/).
 
 \begin{verbatim}
-<z9m865s34c01/file.wav> 
+<b9m865s34c01/file.wav> 
 dcterms:format "audio/x-wav" ;
 dcterms:identifier "https://n2t.net/ark:61001/z9m865s34c01/file.wav" ;
 premis:fixity [
