@@ -125,7 +125,7 @@ accessible by the URL and reasonably independent at that location. If the
 URL includes short copyright information or minimal navigation tools it can
 be entered in edm:isShownBy.'' \textit{Definition of the Europeana Data Model}, Section 3.2.22.Is Shown By.
 
-The above suggests that a digital object displayed on web pages with full information context should be indicated by edm:isShownAt, while a digital object in the best resolution should be indicated by edm:isShownBy. By convention, we indicate the former by appending ``/website'' to the URL containing the ARK identifier, and the latter by appending ``/file.tif'', ``/file.wav'', etc. if the file is going to be retrieved from the OCFL hierarchy on disk; otherwise it should have its own ARK identifier, e.g., if it is going to be served by an external system such as Panopto. If edm:isShownBy is used then edm:object must also be used. ``This will often be the same URL as given in edm:isShownBy.'' \textit{Definition of the Europeana Data Model}, Section 3.2.27.Object.
+The above suggests that a digital object displayed on web pages with full information context should be indicated by edm:isShownAt, while a digital object in the best resolution should be indicated by edm:isShownBy. By convention, we indicate the former by the URL of the mapping ARK identifier,\footnote{For this terminology, see https://datatracker.ietf.org/doc/html/draft-kunze-ark-28\#name-ark-anatomy} and the latter by appending ``/file.tif'', ``/file.wav'', etc. if the file is going to be retrieved from the OCFL disk hierarchy; otherwise it should have its own mapping ARK identifier, e.g., if it is going to be served by an external system such as Panopto. If edm:isShownBy is used then edm:object must also be used. ``This will often be the same URL as given in edm:isShownBy.'' \textit{Definition of the Europeana Data Model}, Section 3.2.27.Object.
 
 % (Use \textbf{edm:ugc} is for crowd-sourced material; it is mandatory only if applicable.)
 
@@ -136,9 +136,9 @@ The following is an example of an ore:Aggregation.
 edm:aggregatedCHO <b9m865s34c01> ;
 edm:datasetName "CAILLA" ;
 edm:dataProvider "University of Chicago Library" ;
-edm:isShownAt <b9m865s34c01/website> ;
-edm:isShownBy <c8m342c21s02> ;
-edm:object <c8m342c21s02> ;
+edm:isShownAt <b9m865s34c01> ;
+edm:isShownBy <c8m342c21s15> ;
+edm:object <c8m342c21s15> ;
 edm:provider "University of Chicago Library" ;
 edm:rights <https://rightsstatements.org/vocab/NoC-US/1.0/> ;
 ore:isDescribedBy <b9m865s34c01/rem> ;
@@ -163,7 +163,7 @@ The following are mandatory Europeana elements for the \textit{edm:ProvidedCHO}.
 
 In addition to what is specified above, the following are also required by local usage for the \textit{edm:ProvidedCHO}.
 \begin{itemize}
-  \item \underline{dcterms:identifier}. String-literal values for locally-created ARK identifiers are used, e.g., "https://n2t.net/ark:61001/z9m865s34c01/website" (\underline{dc:identifier} may be used for any original identifiers occurring in provided metadata).
+  \item \underline{dcterms:identifier}. String-literal values for locally-created ARK identifiers are used, e.g., "https://n2t.net/ark:61001/z9m865s34c01" (\underline{dc:identifier} may be used for any original identifiers occurring in provided metadata).
 
   \item \underline{dc:date}. String-literal values conforming to ISO 8601 or the Extended Date/Time Format Specification (EDTF)\footnote{https://www.loc.gov/standards/datetime/} are used in that order.
 
