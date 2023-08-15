@@ -63,7 +63,7 @@ Some of the following represents local usage in addition to what EDM mandates. F
 
   \item \underline{dcterms:title}. Copy value of dc:title.
 
-  \item \underline{dcterms:date}. ``Recommended practice is to express the date, date/time, or period of time according to ISO 8601-1 [ISO 8601-1] or a published profile of the ISO standard, such as the W3C Note on Date and Time Formats [W3CDTF] or the Extended Date/Time Format Specification [EDTF]. If the full date is unknown, month and year (YYYY-MM) or just year (YYYY) may be used. Date ranges may be specified using ISO 8601 period of time specification in which start and end dates are separated by a '/' (slash) character. Either the start or end date may be missing.'' (https://www.dublincore.org/specifications/dublin-core/dcmi-terms/\#http://purl.org/dc/terms/date)
+  \item \underline{dcterms:date}. Values are expressed according to ISO 8601-2019, falling back to EDTF\footnote{https://www.loc.gov/standards/datetime/} as needed.
 
   \item \underline{dcterms:identifier}. String-literal values for locally-created ARK identifiers are used, e.g., "https://n2t.net/ark:61001/z9m865s34c01". Note: uchicago:identifier may be used for any original identifiers occurring in provided metadata.
 
