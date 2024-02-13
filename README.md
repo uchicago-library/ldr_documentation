@@ -1,2 +1,2 @@
 # ldr_documentation
-Documentation for the Library Digital Repository is located in https://github.com/uchicago-library/ldr_documentation/wiki.
+Documentation is located in https://github.com/uchicago-library/ldr_documentation/wiki. Documentation specific to UChicagoNode is located at https://github.com/uchicago-library/ldr_documentation/wiki/UChicagoNode.
