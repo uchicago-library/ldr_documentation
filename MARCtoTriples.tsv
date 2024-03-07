@@ -1,0 +1,46 @@
+MARC	DC	Concatenation	Maps Exceptions	Maps Notes	Chopin Exceptions	Chopin Notes	General Notes
+20	bf:ISBN						
+22	bf:ISSN						
+034 $d $e $f $g	bf:coordinates	concatenate in DC, may break out into separate fields if we end up using other element sets.		Coordinate data. May not be present for all map collections.			"encode this in the following format: $$c(W 87°51'04""-W 87°31'25""/N 42°01'23""-N 41°38'39"")"
+8	dcterms:language						"For multilingual works or translations. See MARC documentation for how to extract language from this string. See https://www.loc.gov/marc/languages/language_code.html for a lookup table. Note: as per charles, 2020/07/01, langauges are encoded as two character strings, eg. ""en""."
+100 $a	madsrdf:PersonalName, dcterms:creator						
+110	madsrdf:CorporateName, dcterms:creator						
+111	madsrdf:ConferenceName, dcterms:creator						
+130	modsrdf:titleUniform						Uniform title. Used if no author fields are available. (This is a note about the form MARC records usually take- there is no need to account for this in the conversion code.)
+240	modsrdf:titleUniform						Uniform title. Used if creator data is present. (This is a note about the form MARC records usually take- there is no need to account for this in the conversion code.)
+245 $a $b	dcterms:title	Concatenate $a and $b					
+246	dcterms:alternative						
+255 $a	bf:scale			Scale			
+255$b	dcterms:format			Projection, rarely occurs.			
+260 $a	bf:place					260 fields are in pre-2013 records, so may be found in Chopin.	
+260 $b	dcterms:publisher						
+260 $c	dcterms:date, dcterms:issued						"3/17: conversion code currently assumes this is in dcterms. If the date occurs as four digits, pass it along as-is. If the date occurs as a range, like ""1923-1924"" pass it along as-is. If the date occurs as something like ""192-"", convert it to ""1920-1929""."
+264 _1$a	bf:place						
+264 _1$b	dcterms:publisher						
+264 _1$c	dcterms:date, dcterms:issued						
+264 _4$c	dcterms:dateCopyrighted						
+336 $a	dcterms:type		Omit this field for this collection.		Omit this field for this collection.		Indicates type of content, eg. 'text', 'cartographic image', 'notated music', etc. Not usually useful within a homogenous collection.
+338	dcterms:medium		Omit this field for this collection.		Omit this field for this collection.		Likely to be redundant with 300 $a. Not worth displaying in homogenous collection.
+500	dcterms:description	Multiple 500 fields should not be concatenated.					
+506, 540, 542	dcterms:accessRights						Will likely be replaced with URI indicated encoded collection access rights.
+538	dcterms:description						Reproduction note about standards.
+600 $a $c $d $q $2 fast	dcterms:subject						
+610 $a $b $2 fast	dcterms:subject						
+650 $a $x $2 fast	dcterms:subject						Dedupe repeated headings across dcterms:subjects
+650 $y	dcterms:temporal						
+650 $v	dcterms:type						Dedupe repeated headings across dcterms:type fields
+651 $v	dcterms:type						Dedupe repeated headings across dcterms:type fields
+655 $2 fast	dcterms:type						Dedupe repeated headings across dcterms:type fields
+651 _7 $a $2 fast	dcterms:coverage		dcterms:spatial				FAST only. Dedupe repeated headings across dcterms:coverage fields.
+651 _7 $a $z $2 fast	dcterms.spatial						FAST only. Dedupe repeated headings across dcterms:coverage fields.
+700 $a (if subfield $t is not present)	madsrdf:PersonalName, dcterms:creator						Sometimes 700 is more appropriate mapped to dcterms:author, but not in Chopin or Maps collections. Requires consultation of $e field for specification of role. (This should not have any effect on the first few collections.)
+700 $a (if subfield $t is present)	dcterms:isPartOf						If a subfield $t is present on the 700 treat as dcterms:isPartOf. Does not occur in Chopin or maps.
+710 $a	madsrdf:CorporateName, dcterms:creator						Corporate bodies. Should not occur in Chopin or maps.
+730 $a	dcterms:relation						Should not occur in Chopin or maps.
+776 $i	dcterms:hasFormat						Indicates existence of version in other physical format. Could be used to construct link.
+830	dcterms:isPartOf						Name of collection.
+	dcterms:identifier						As per charles, 2020/07/01, this is now an ARK identifier.
+Linked Record							Consult the record referred to in the 776 $w of the digital. This will contain an OCLC number and/or a Bib ID for the equivalent print record.
+1	bf:Local						Output as a PI, e.g. http://pi.lib.uchicago.edu/1001/cat/bib/7368097
+300 $a $c	dcterms:format			Add as second line within the dcterms:format info from 255			
+929 $a	bf:ClassificationLcc						
